@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kasir Toko</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        #total-harga { padding: 10px; display: inline-block; transition: 0.3s; }
+        button { display: block; margin-top: 15px; padding: 8px 15px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h1 id="total-harga">125000</h1>
+
+    <button id="tombol-diskon">Hitung Diskon</button>
+
+    <script>
+        // TULIS KODE JAVASCRIPT LO DI BAWAH SINI
+        const harga = document.getElementById('total-harga');
+        const buttonDiskon = document.getElementById('tombol-diskon');
+        buttonDiskon.addEventListener('click', () => {
+            const angka = Number(harga.innerText);
+            if (angka >= 100000) {
+                harga.style.backgroundColor = 'green' ;
+                harga.style.color = 'white';
+            }
+        })
+        // =======================================
+    </script>
+</body>
+</html>

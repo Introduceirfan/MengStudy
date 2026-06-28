@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Validasi Gudang Toko</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        input { padding: 8px; width: 100px; font-size: 16px; }
+        button { padding: 8px 15px; margin-left: 10px; cursor: pointer; }
+        #pesan-peringatan { margin-top: 15px; font-weight: bold; font-size: 18px; }
+    </style>
+</head>
+<body>
+
+    <h2>Input Jumlah Stok Beras Baru:</h2>
+    
+    <input type="number" id="input-stok" value="0">
+
+    <button id="tombol-cek">Cek Validasi</button>
+
+    <p id="pesan-peringatan">Menunggu input...</p>
+
+    <script>
+        // TULIS KODE JAVASCRIPT LO DI BAWAH SINI
+        const inputStok = document.getElementById('input-stok');
+        const tombolCek = document.getElementById('tombol-cek');
+        const pesan = document.getElementById('pesan-peringatan');
+
+        tombolCek.addEventListener('click', () => {
+            // Trik Pro: Buat ngambil angka dari elemen <input>, pake '.value', bukan '.innerText'
+            const angkaStok = Number(inputStok.value);
+            // LANJUTKAN LOGIKA IF - ELSE IF - ELSE LO DI SINI
+            if (angkaStok <= 0) {
+                pesan.innerText = "Jumlah tidak valid!";
+                pesan.style.color = 'red';
+            } else if (angkaStok >= 100) {
+                pesan.innerText = "Gudang penuh, maksimal 100!";
+                pesan.style.color = 'red';
+            } else {
+                pesan.innerText = "Stok aman, siap dimasukkan!";
+                pesan.style.color = 'green'
+            }
+        });
+    </script>
+</body>
+</html>
