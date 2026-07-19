@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dark Mode</title>
+    <style>
+        body { 
+            font-family: sans-serif; 
+            padding: 50px; 
+            background-color: white; 
+            color: black;
+            transition: background-color 0.5s, color 0.5s; /* Biar animasinya mulus pas berubah */
+        }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h1 id="judul">Selamat Datang di Toko Masbro</h1>
+    <p id="deskripsi">Klik tombol di bawah buat nyobain fitur Dark Mode sakti.</p>
+
+    <button id="tombol-tema">Ubah Tema</button>
+
+    <script>
+        // 1. Incer elemen body dan tombolnya
+        const bodybg = document.body; // Trik khusus: buat ngincer tag <body>, cukup ketik document.body
+        const tombol = document.getElementById('tombol-tema');
+
+        tombol.addEventListener('click', () => {
+            
+            // TULIS LOGIKA IF-ELSE LO DI SINI
+            // Petunjuk: Cek apakah bodiKita.style.backgroundColor === 'black'
+            if (bodybg.style.backgroundColor !=='black') {
+                bodybg.style.backgroundColor = 'black';
+                bodybg.style.color = 'white';
+            } else {
+                bodybg.style.backgroundColor = 'white';
+                bodybg.style.color = 'black';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kasirrr</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.8; }
+        input { padding: 5px; margin-bottom: 10px; width: 150px; }
+        button { display: block; padding: 8px 15px; cursor: pointer; margin-top: 10px; }
+        #total-belanja { font-size: 20px; font-weight: bold; margin-top: 15px; }
+        #status-pembayaran { font-style: italic; font-size: 16px; }
+    </style>
+</head>
+<body>
+
+    <h2>Kasir Toko</h2>
+    
+    <label>Harga Beras /Kg (Rp):</label><br>
+    <input type="number" id="input-harga" value="15000"><br>
+
+    <label>Mau Beli Berapa Kg?:</label><br>
+    <input type="number" id="input-jumlah" value="0"><br>
+
+    <label>Uang yang Dibawa Emak (Rp):</label><br>
+    <input type="number" id="input-uang" value="50000"><br>
+
+    <button id="tombol-bayar">Proses Bayar</button>
+
+    <p id="total-belanja">Total: Rp 0</p>
+    
+    <p id="status-pembayaran">Menunggu pembayaran...</p>
+
+    <script>
+        // 1. INCER SEMUA ELEMEN YANG DIBUTUHKAN
+        const inputHarga = document.getElementById('input-harga');
+        const inputJumlah = document.getElementById('input-jumlah');
+        const inputUang = document.getElementById('input-uang');
+        const teksTotal = document.getElementById('total-belanja');
+        const teksStatus = document.getElementById('status-pembayaran');
+        const tombolBayar = document.getElementById('tombol-bayar');
+
+        // 2. PASANG EVENT LISTENER
+        tombolBayar.addEventListener('click', () => {
+            // Ambil semua angka dari input
+            const harga = Number(inputHarga.value);
+            const jumlah = Number(inputJumlah.value);
+            const uangBawaan = Number(inputUang.value);
+            const total = harga * jumlah
+            teksTotal.innerText = `Total : Rp. ${total}`;
+
+            if (uangBawaan < total) {
+                teksStatus.innerText = "Uang kurang mak, ambil atm dulu lah!";
+                teksStatus.style.color = 'red';
+            } else {
+                teksStatus.innerText = `uang cukup nihh. kembaliannya RP ${uangBawaan - total}`;
+                teksStatus.style.color = 'green';
+            }
+            
+        });
+    </script>
+</body>
+</html>
