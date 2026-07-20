@@ -106,3 +106,54 @@
 #     print(f"{space * (n-1)}{star * ((2*1)-1)}")
 # if __name__ == "__main__":
 #     triangle(4)
+
+#10 level: 16, this is holllowww squaree
+# def hollow(n):
+#     i = 1
+#     space = " "
+#     star = "*"
+#     while i <= n:
+#         if i == 1 or i == n:
+#             print(f"{star * n}")
+#         else:
+#             print(f"{star}{space*(n - 2)}{star}")
+#         i += 1
+# if __name__ == "__main__":
+#     hollow(5)
+
+#11 level:17, trinagle pattern, hollow and somescaddy?
+# def triangle(n):
+#     i = 1
+#     star = "*"
+#     space = " "
+#     while i <= n:
+#         j = 1
+#         if i == 1:
+#             print(f"{star}")
+#         if i != 1 and i != n:
+#             while j < i:
+#                 print(f"{star}{space*(j - 1)}{star}")
+#                 j += 1
+#         if i == n:
+#             print(f"{star*n}")
+#         i += 1
+# if __name__ == "__main__":
+#     triangle(5)
+#75%
+
+# solution :
+# def triangle(n):
+#     i = 1
+#     star = "*"
+#     space = " "
+#     while i <= n:
+#         if i == 1:
+#             print(star)
+#         elif i == n:
+#             print(star * n)
+#         else:
+#             print(f"{star}{space * (i - 2)}{star}")
+#         i += 1
+
+# if __name__ == "__main__":
+#     triangle(5)
