@@ -24,3 +24,7 @@ dist-ssr
 *.sw?
 
 toko-belajar/
+
+**/test/
+**/tmc/
+__pycache__
