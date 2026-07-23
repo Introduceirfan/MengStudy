@@ -28,3 +28,5 @@ toko-belajar/
 **/test/
 **/tmc/
 __pycache__
+**/src/*.txt
+**/src/*.csv
