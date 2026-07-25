@@ -5,15 +5,17 @@ while True:
     if command == 1:
         name = input("name: ")
         if name in dict:
-            for i in name.items():
-                print(dict[name])
+            for number in dict[name]:
+                print(number)
         else:
             print("no number")
 
     if command == 2:
         add_name = input("name: ")
         add_num = input("number: ")
-        dict[add_name] = add_num
+        if add_name not in dict:
+            dict[add_name] = []
+        dict[add_name].append(add_num)
         print("ok!")
 
     if command == 3:
