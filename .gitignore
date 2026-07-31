@@ -30,3 +30,4 @@ toko-belajar/
 __pycache__
 **/src/*.txt
 **/src/*.csv
+**/*.txt
