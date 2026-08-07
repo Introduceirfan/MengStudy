@@ -81,4 +81,6 @@
 // echo "Pajak 10%: Rp {$pajak}\n";
 // echo "----------------------\n";
 // echo "Total    : Rp {$grand_total}";
+
 ?>
+<!-- this is for the adaptation with my own language magic? -->
