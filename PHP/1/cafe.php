@@ -18,16 +18,25 @@ if (isset($_POST['menu'])) {
     $kembalian = $bayar - $total_tagihan;
 
     if ($bayar >= $total_tagihan) {
-        echo "Kamu memesan {$menu_dipilih}";
-        echo "<br>";
-        echo "Total tagihan sebesar: $total_tagihan";
-        echo "<p style='color: green; font-weight: bold;'>Kamu membayar sebesar $bayar dan sisa kembalianmu adalah $kembalian</p>";
+        $_SESSION['hasil'] = "Kamu memesan $menu_dipilih<br>Total tagihan sebesar: $total_tagihan<p style='color: green; font-weight: bold;'>Kamu membayar sebesar $bayar dan sisa kembalianmu adalah $kembalian</p>";
     } else {
-        echo "<p style='color: red; font-weight: bold'>SORRYY uang kamu kurang segini $total_tagihan</p>";
-    }
+        $_SESSION['hasil'] = "<p style='color: red; font-weight: bold'>SORRYY uang kamu kurang segini $total_tagihan</p>";
+    } 
 
+    header("Location: cafe.php");
+    exit();
+} else {
+    $_SESSION['hasil'] = "Kamu belum mengklik!";
+}
+
+$pesan_hasil = "";
+if (isset($_SESSION['hasil'])) {
+    $pesan_hasil = $_SESSION['hasil'];
+
+    unset($_SESSION['hasil']);
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,5 +68,7 @@ if (isset($_POST['menu'])) {
         
         <button type="submit">CEK SINI!</button>
     </form>
+
+    <?php echo $pesan_hasil; ?>
 </body>
 </html>
