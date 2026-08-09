@@ -8,25 +8,29 @@ $daftar_menu = [
     'nasgor' => 15000
 ];
 
-if (isset($_POST['menu'])) {
-    $menu_dipilih = $_POST['menu'];
-    $porsi = $_POST['porsi'];
-    $bayar = $_POST['bayar'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $harga_satuan = $daftar_menu[$menu_dipilih];
-    $total_tagihan = $harga_satuan * $porsi;
-    $kembalian = $bayar - $total_tagihan;
-
-    if ($bayar >= $total_tagihan) {
-        $_SESSION['hasil'] = "Kamu memesan $menu_dipilih<br>Total tagihan sebesar: $total_tagihan<p style='color: green; font-weight: bold;'>Kamu membayar sebesar $bayar dan sisa kembalianmu adalah $kembalian</p>";
+    if (empty($_POST['menu'])) {
+        $_SESSION['hasil'] = "<p style='color: red;'>SORRY kamu belum ngeklik ini</p>";
     } else {
-        $_SESSION['hasil'] = "<p style='color: red; font-weight: bold'>SORRYY uang kamu kurang segini $total_tagihan</p>";
-    } 
+        $menu_dipilih = $_POST['menu'];
+        $porsi = $_POST['porsi'];
+        $bayar = $_POST['bayar'];
+
+        $harga_satuan = $daftar_menu[$menu_dipilih];
+        $total_tagihan = $harga_satuan * $porsi;
+        $kembalian = $bayar - $total_tagihan;
+
+        if ($bayar >= $total_tagihan) {
+            $_SESSION['hasil'] = "Kamu memesan $menu_dipilih<br>Total tagihan sebesar: $total_tagihan<p style='color: green; font-weight: bold;'>Kamu membayar sebesar $bayar dan sisa kembalianmu adalah $kembalian</p>";
+        } else {
+            $_SESSION['hasil'] = "<p style='color: red; font-weight: bold'>SORRYY uang kamu kurang segini $total_tagihan</p>";
+        } 
+    
+    }
 
     header("Location: cafe.php");
-    exit();
-} else {
-    $_SESSION['hasil'] = "Kamu belum mengklik!";
+    exit(); 
 }
 
 $pesan_hasil = "";
@@ -47,7 +51,7 @@ if (isset($_SESSION['hasil'])) {
     <form action="" method="POST">
         <div>
             <label>Pilih Menu: </label>
-            <select name="menu">
+            <select name="menu" required>
                 <option value="" selected disabled hidden>Pilih menu disini!</option>
                 <option value="kopi">Kopi Hitam - 10.000</option>
                 <option value="teh">Es Teh Manis - 5.000</option>

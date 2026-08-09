@@ -1,3 +1,23 @@
+<?php
+session_start()
+
+if (isset($_SESSION['is_logged_in'])) {
+    header("Location: dashboard.php");
+    exit();
+}
+
+$error_message = "";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (empty($_POST['username']) || empty($_POST['password'])) {
+        $error_message = "Username dan password wajib banget diisi!";
+    } else {
+        $username = $_POST['username']
+        $password = $_POST['password']
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
