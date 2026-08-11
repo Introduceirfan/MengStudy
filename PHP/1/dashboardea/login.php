@@ -1,5 +1,5 @@
 <?php
-session_start()
+session_start();
 
 if (isset($_SESSION['is_logged_in'])) {
     header("Location: dashboard.php");
@@ -10,10 +10,19 @@ $error_message = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($_POST['username']) || empty($_POST['password'])) {
-        $error_message = "Username dan password wajib banget diisi!";
+        $error_message = "Username dan Password wajib diisi!";
     } else {
-        $username = $_POST['username']
-        $password = $_POST['password']
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        if ($username === 'admin' && $password === '12345') {
+            $_SESSION['is_logged_in'] = true;
+            $_SESSION['user_login']   = $username;
+
+            header("Location: dashboard.php");
+            exit();
+        } else {
+            $error_message = "Username atau Password salah!";
+        }
     }
 }
 ?>
@@ -21,22 +30,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login Page</title>
+    <title>Login System</title>
 </head>
 <body>
-    <h1>Login ke dashboard!</h1>
+    <h2>Form Login</h2>
+
+    <?php if (!empty($error_message)): ?>
+        <p style="color: red; font-weight: bold;"><?php echo htmlspecialchars($error_message); ?></p>
+    <?php endif; ?>
+
     <form action="" method="POST">
         <div>
-            <label>Username: </label>
-            <input type="text" name="username" required>
+            <label>Username:</label>
+            <input type="text" name="username">
         </div>
         <br>
         <div>
-            <label>Password: </label>
-            <input type="text" name="password" required>
+            <label>Password:</label>
+            <input type="password" name="password">
         </div>
         <br>
-        <button type="submit">Loginkan!</button>
+        <button type="submit">LOGIN</button>
     </form>
 </body>
 </html>
