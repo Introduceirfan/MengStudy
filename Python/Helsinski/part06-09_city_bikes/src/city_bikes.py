@@ -1,5 +1,3 @@
-# tee ratkaisu tänne
-# Write your solution here
 import math
 
 def get_station_data(files):
@@ -13,7 +11,6 @@ def get_station_data(files):
     return station
 
 def distance(stations: dict, station1: str, station2: str):
-
     longitude1, latitude1 = stations[station1]
     longitude2, latitude2 = stations[station2]
 
@@ -23,12 +20,26 @@ def distance(stations: dict, station1: str, station2: str):
 
     return distance_km
 
-def greatest_distance(stey):
+def greatest_distance(stations: dict):
     max_distance = 0
     stat1 = ""
     stat2 = ""
-    for item in stey:
-        
+    
+    station_names = list(stations.keys())
+    
+    for i in range(len(station_names)):
+        for j in range(i + 1, len(station_names)):
+            s1 = station_names[i]
+            s2 = station_names[j]
+            
+            current_dist = distance(stations, s1, s2)
+            
+            if current_dist > max_distance:
+                max_distance = current_dist
+                stat1 = s1
+                stat2 = s2
+                
+    return (stat1, stat2, max_distance)
 
 if __name__ == "__main__":
     stations = get_station_data('stations1.csv')
