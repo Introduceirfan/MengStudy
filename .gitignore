@@ -31,3 +31,4 @@ __pycache__
 **/src/*.txt
 **/src/*.csv
 **/*.txt
+**/vendor

@@ -1,0 +1,18 @@
+{
+    "name": "dummy/weather_dumb",
+    "description": "dummyasmytraining",
+    "autoload": {
+        "psr-4": {
+            "Dummy\\WeatherDumb\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Introduceirfan",
+            "email": "febriannaufalirfansyah@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^8.0"
+    }
+}
