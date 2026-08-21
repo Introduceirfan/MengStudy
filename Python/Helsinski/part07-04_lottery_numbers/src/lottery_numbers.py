@@ -1,14 +1,13 @@
 # Write your solution here
-import random
+from random import randint
+def lottery_numbers(amount, lower, upper):
+    winner = []
+    while len(winner) < amount:
+        new = randint(lower, upper)
+        if new not in winner:
+            winner.append(new)
+    return sorted(winner)
 
-def lottery_numbers(amount: int, lower: int, upper: int) -> list:
-    numbers = []
-    while len(numbers) < amount:
-        random_num = random.randint(lower, upper)
-        if random_num not in numbers:
-            numbers.append(random_num)
-    numbers.sort()
-    
-    return numbers
-for number in lottery_numbers(7, 1, 40):
-    print(number)
+if __name__ == "__main__":
+    for number in lottery_numbers(7,1,40):
+        print(number)
